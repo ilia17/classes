@@ -10,8 +10,14 @@ int main() {
     instruments[2] = new Order("BTC", 10000, 1, "Buy");
     
     for (int i = 0; i < 3; i++) {
-        instruments[i]->print();  // calls correct print for each type
+        std::cout << *instruments[i] << "\n";  // calls correct print for each type
     }
+
+    std::cout << std::boolalpha;
+    std::cout << "instruments[0] < instruments[1]: " << (*instruments[0] < *instruments[1]) << std::endl;
+    std::cout << "instruments[0] > instruments[1]: " << (*instruments[0] > *instruments[1]) << std::endl;
+    std::cout << "instruments[0] == instruments[1]: " << (*instruments[0] == *instruments[1]) << std::endl;
+    std::cout << "instruments[0] != instruments[1]: " << (*instruments[0] != *instruments[1]) << std::endl;
 
     for (int i = 0; i < 3; i++) {
         delete instruments[i];  // virtual destructor ensures correct cleanup

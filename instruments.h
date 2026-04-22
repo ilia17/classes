@@ -11,8 +11,31 @@ class TradingInstrument{
     public:
         //constructor
         TradingInstrument(std::string sym, double p, int q);
-        virtual ~TradingInstrument();
         virtual void print();
+        virtual ~TradingInstrument();
+        bool operator<(const TradingInstrument& other) const{
+            return price < other.price;
+        }
+        bool operator>(const TradingInstrument& other) const{
+            return price > other.price;
+        }
+        bool operator==(const TradingInstrument& other) const{
+            return price == other.price;
+        }
+        bool operator!=(const TradingInstrument& other) const{
+            return price != other.price;
+        }
+        bool operator<=(const TradingInstrument& other) const{
+            return price <= other.price;
+        }
+        bool operator>=(const TradingInstrument& other) const{
+            return price >= other.price;
+        }
+        friend std::ostream& operator<<(std::ostream& os, const TradingInstrument& t) {
+            os << "Symbol: " << t.symbol << " Price: " << t.price << " Quantity: " << t.quantity;
+            return os;
+        }
+
 };  
 
 //derived class
